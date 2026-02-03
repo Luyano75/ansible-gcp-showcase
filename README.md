@@ -1,73 +1,74 @@
-# 🚀 Ansible GCP Deployment Showcase
+# Ansible GCP Deployment Showcase
 
-This repository demonstrates how to automate the deployment of web applications on Google Cloud Platform (GCP) Virtual Machines using **Ansible**. It features automated Docker installation, Nginx configuration, and application containerization.
+This repository demonstrates the automation of web application deployment on Google Cloud Platform (GCP) Virtual Machines using Ansible. It covers automated Docker installation, Nginx configuration, and application containerization.
 
-## 🌟 Showcase
+## Project Overview
 
-### 🛠️ Key Features
-- **Automated Infrastructure Configuration**: One-click setup for GCP Debian instances.
-- **Docker Integration**: Automates the installation of Docker Engine and Docker Compose.
-- **Microservices Deployment**: Deploys a containerized web application using Docker Compose.
-- **Custom Nginx Setup**: Installs and configures Nginx as a web server with a custom landing page.
+### Key Features
+- Automated Infrastructure Configuration: One-click setup for GCP Debian instances.
+- Docker Integration: Automated installation of Docker Engine and Docker Compose.
+- Microservices Deployment: Deployment of containerized web applications using Docker Compose.
+- Custom Nginx Setup: Installation and configuration of Nginx as a web server with a custom landing page.
 
-### 📸 Preview
-When you run the playbooks, Ansible will:
-1. Connect via SSH to your GCP instances.
-2. Install all necessary dependencies (Docker, Nginx).
-3. Push your application files to the remote server.
-4. Launch the application, making it accessible via the VM's public IP.
+### Technical Workflow
+When executed, the Ansible playbooks perform the following actions:
+1. Establish SSH connections to target GCP instances.
+2. Install necessary system dependencies (Docker, Nginx).
+3. Transfer application configurations and static files to the remote server.
+4. Initialize the application services, making them accessible via public endpoints.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 .
 ├── ansible.cfg             # Ansible configuration file
-├── deploy_docker_app.yml     # Playbook for Docker & App deployment
+├── deploy_docker_app.yml     # Playbook for Docker and application deployment
 ├── install_nginx.yml        # Playbook for Nginx installation
-├── inventory.ini.example    # Template for your server inventory
+├── inventory.ini.example    # Template for server inventory configuration
 ├── files/                   # Static files and configurations
-│   ├── docker-compose.yml   # Multi-container definition
-│   └── index.html           # Custom landing page
-└── .gitignore               # Securely excludes sensitive files
+│   ├── docker-compose.yml   # Docker Compose service definitions
+│   └── index.html           # Custom application landing page
+└── .gitignore               # Git exclusion rules for sensitive data
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Prerequisites
-- Ansible installed on your local machine.
-- One or more GCP VMs (Debian 12/Bookworm recommended).
-- SSH access to your VMs.
+- Ansible installed on the local management machine.
+- Access to one or more GCP Virtual Machines (Debian 12 recommended).
+- SSH key-based authentication configured for the target VMs.
 
 ### 2. Configuration
-Copy the inventory template and fill in your VM details:
+Copy the inventory template and populate it with your specific server details:
 ```bash
 cp inventory.ini.example inventory.ini
-# Edit inventory.ini with your IPs and username
+# Edit inventory.ini to include your VM IP addresses and SSH user
 ```
 
-### 3. Usage
+### 3. Execution
 
-#### To setup Nginx:
+#### Install and Configure Nginx:
 ```bash
 ansible-playbook install_nginx.yml
 ```
 
-#### To deploy the Docker application:
+#### Deploy Docker Application:
 ```bash
 ansible-playbook deploy_docker_app.yml
 ```
 
 ---
 
-## 🛡️ Security & Best Practices
-- **Inventory Protection**: The `inventory.ini` file is ignored by Git to prevent leaking private IP addresses.
-- **State Management**: Infrastructure state files (`.tfstate`) are excluded.
-- **Modular Playbooks**: Tasks are separated for better maintainability.
+## Security and Best Practices
+- Inventory Data Protection: The `inventory.ini` file is explicitly excluded from version control to prevent unauthorized exposure of server IP addresses.
+- Credential Management: SSH keys and sensitive configuration files are managed outside the repository scope.
+- State Isolation: Infrastructure state files (such as Terraform .tfstate) are excluded to maintain environment integrity.
+- Modular Design: Playbooks are structured by function to ensure maintainability and reusability.
 
 ---
 
-Made with ❤️ by [Your Name/GitHub Handle]
+Maintainer: [Your Name/GitHub Handle]
