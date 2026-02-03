@@ -1,0 +1,28 @@
+---
+- name: Installer et configurer Nginx
+  hosts: gcp_vms
+  become: yes
+
+  tasks:
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: latest
+
+    - name: Copier notre page d'accueil personnalisée
+      copy:
+        src: files/index.html
+        dest: /var/www/html/index.html
+      notify: Redémarrer Nginx
+
+    - name: S'assurer que Nginx est démarré et activé au boot
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+  handlers:
+    - name: Redémarrer Nginx
+      service:
+        name: nginx
+        state: restarted

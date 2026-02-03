@@ -1,0 +1,26 @@
+# Ansible
+*.retry
+inventory.ini
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+bin/
+include/
+lib/
+lib64/
+pyvenv.cfg
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+# Secrets & Local Config
+.env
+.vscode/
+*.code-workspace
+*.pem
+*.key

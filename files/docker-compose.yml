@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  webapp:
+    image: nginxdemos/hello:latest
+    ports:
+      - "8080:80"
+    restart: always
