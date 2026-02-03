@@ -70,5 +70,3 @@ ansible-playbook deploy_docker_app.yml
 - Modular Design: Playbooks are structured by function to ensure maintainability and reusability.
 
 ---
-
-Maintainer: [Your Name/GitHub Handle]
